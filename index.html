@@ -1,12 +1,13 @@
-Enter<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Grill Master | طعم الأصالة</title>
+    <title>The Grill Master | تجربة شواء فاخرة</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/scrollreveal"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
@@ -14,41 +15,80 @@ Enter<!DOCTYPE html>
         <div class="logo">GRILL<span>MASTER</span></div>
         <ul class="nav-links">
             <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#about">عن المطعم</a></li>
             <li><a href="#menu">المنيو</a></li>
-            <li><a href="https://wa.me/YOUR_NUMBER" class="btn-nav">احجز طاولتك</a></li>
+            <li><a href="#contact">اتصل بنا</a></li>
+            <li><a href="https://wa.me/YOUR_NUMBER" class="btn-nav">احجز الآن</a></li>
         </ul>
     </nav>
 
     <section id="home" class="hero">
         <div class="hero-content">
             <h1 class="reveal">أفضل تجربة <span>ستيك</span> في دبي</h1>
-            <p class="reveal">لحوم طازجة، طهي على اللهب، وأجواء لا تُنسى.</p>
-            <a href="#menu" class="cta-btn reveal">استكشف القائمة</a>
+            <p class="reveal">نستخدم أجود أنواع اللحوم العالمية لنقدم لك طعماً لا ينسى مطهواً على أيدي أمهر الشيفات.</p>
+            <div class="btns reveal">
+                <a href="#menu" class="cta-btn">استكشف القائمة</a>
+                <a href="#about" class="cta-btn secondary">من نحن؟</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="about-container">
+            <div class="about-text reveal">
+                <h2>لماذا <span>Grill Master</span>؟</h2>
+                <p>نحن لا نقدم الطعام فحسب، بل نقدم تجربة حسية متكاملة. بدأت رحلتنا في البحث عن أسرار الشواء الأصيل لنصل إلى خلطاتنا السرية التي تميزنا عن غيرنا.</p>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> لحوم طازجة يومياً</li>
+                    <li><i class="fas fa-check-circle"></i> طهي على الفحم الطبيعي</li>
+                    <li><i class="fas fa-check-circle"></i> إطلالات ساحرة وأجواء فاخرة</li>
+                </ul>
+            </div>
+            <div class="about-img reveal">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1000" alt="Grill">
+            </div>
         </div>
     </section>
 
     <section id="menu" class="menu-preview">
-        <h2 class="reveal">أطباقنا المختارة</h2>
+        <h2 class="reveal">أطباقنا <span>المختارة</span></h2>
         <div class="grid">
             <div class="card reveal">
                 <div class="img-box" style="background-image: url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1000');"></div>
                 <h3>توم هوك فاخر</h3>
-                <p>طهي بطيء على نار هادئة</p>
+                <p>900 جرام من اللحم المعتّق مع الزبدة والأعشاب.</p>
+                <span class="price">250 درهم</span>
             </div>
             <div class="card reveal">
                 <div class="img-box" style="background-image: url('https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?q=80&w=1000');"></div>
                 <h3>برجر اللهب</h3>
-                <p>جبنة ذائبة مع صوص خاص</p>
+                <p>خبز البريوش الطازج مع صوص المدخن الخاص.</p>
+                <span class="price">85 درهم</span>
+            </div>
+            <div class="card reveal">
+                <div class="img-box" style="background-image: url('https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=1000');"></div>
+                <h3>أضلاع مشوية</h3>
+                <p>أضلاع مطبوخة لمدة 12 ساعة تذوب في الفم.</p>
+                <span class="price">180 درهم</span>
             </div>
         </div>
     </section>
 
+    <section id="contact" class="contact-section">
+        <h2 class="reveal">تواصل <span>معنا</span></h2>
+        <div class="contact-info reveal">
+            <p><i class="fas fa-map-marker-alt"></i> دبي، بوليفارد الشيخ محمد بن راشد</p>
+            <p><i class="fas fa-phone"></i> +971 50 000 0000</p>
+            <p><i class="fas fa-clock"></i> مفتوح يومياً: 12 ظهراً - 12 منتصف الليل</p>
+        </div>
+    </section>
+
     <footer>
-        <p>© 2026 Grill Master - Designed by Qusai</p>
+        <p>© 2026 Grill Master - Designed by Qusai Designs</p>
     </footer>
 
     <script>
-        ScrollReveal().reveal('.reveal', { delay: 300, distance: '50px', origin: 'bottom' });
+        ScrollReveal().reveal('.reveal', { delay: 300, distance: '50px', origin: 'bottom', duration: 1000 });
     </script>
 </body>
 </html>
