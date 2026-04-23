@@ -3,57 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Grill Master | Qusai Designs</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
-        body { background-color: #0c0c0c; color: #fff; text-align: center; }
-        nav { padding: 20px; background: #1a1a1a; border-bottom: 2px solid #ff4d00; }
-        .logo { font-size: 24px; font-weight: bold; }
-        .logo span { color: #ff4d00; }
-        .hero { height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1000'); background-size: cover; background-position: center; }
-        h1 { font-size: 3.5rem; margin-bottom: 20px; }
-        h1 span { color: #ff4d00; }
-        p { font-size: 1.2rem; color: #ccc; max-width: 600px; margin-bottom: 30px; }
-        .btn { padding: 15px 40px; background: #ff4d00; color: #fff; text-decoration: none; border-radius: 30px; font-weight: bold; font-size: 1.1rem; }
-        .menu-section { padding: 80px 20px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
-        .card { background: #1a1a1a; padding: 20px; border-radius: 15px; border: 1px solid #333; }
-        .card img { width: 100%; border-radius: 10px; margin-bottom: 15px; }
-        .card h3 { color: #ff4d00; margin-bottom: 10px; }
-        footer { padding: 40px; color: #555; font-size: 0.9rem; }
-    </style>
+    <title>Lumina Gastronomy | تجربة طعام فاخرة</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-    <nav>
-        <div class="logo">GRILL<span>MASTER</span></div>
-    </nav>
-
-    <section class="hero">
-        <h1>أفضل تجربة <span>ستيك</span> في دبي</h1>
-        <p>لحوم فاخرة مطهوة على اللهب، جودة عالمية في قلب الإمارات.</p>
-        <a href="https://wa.me/YOUR_NUMBER" class="btn">احجز طاولتك الآن</a>
-    </section>
-
-    <section class="menu-section">
-        <h2 style="margin-bottom: 40px; font-size: 2.5rem;">أطباقنا <span>المميزة</span></h2>
-        <div class="grid">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=600" alt="steak">
-                <h3>توم هوك ستيك</h3>
-                <p>900 جرام من اللحم الفاخر</p>
+    <header>
+        <nav class="navbar">
+            <div class="logo">LUMINA<span>.</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#menu">القائمة</a></li>
+                <li><a href="#about">من نحن</a></li>
+                <li><a href="#contact">اتصل بنا</a></li>
+            </ul>
+            <div class="cart-icon" onclick="toggleCart()">
+                <i class="fas fa-shopping-bag"></i>
+                <span id="cart-count">0</span>
             </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?q=80&w=600" alt="burger">
-                <h3>برجر اللهب</h3>
-                <p>بجبنة التشيدر المدخنة</p>
-            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>تذوق الفن في كل لقمة</h1>
+            <p>نقدم لك تجربة استثنائية تجمع بين الطعم الأصيل واللمسة العصرية.</p>
+            <a href="#menu" class="btn">استعرض القائمة</a>
         </div>
     </section>
 
-    <footer>
-        <p>© 2026 Designed by Qusai Designs</p>
+    <section id="menu" class="menu">
+        <h2 class="section-title">قائمة الطعام المختارة</h2>
+        <div class="menu-grid" id="menu-grid">
+            </div>
+    </section>
+
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3>سلة المشتريات</h3>
+            <i class="fas fa-times" onclick="toggleCart()"></i>
+        </div>
+        <div id="cart-items" class="cart-items">
+            </div>
+        <div class="cart-footer">
+            <div class="total">الإجمالي: <span id="cart-total">0</span> ر.س</div>
+            <button class="checkout-btn">إتمام الطلب</button>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>اتصل بنا</h3>
+                <p><i class="fas fa-phone"></i> +966 500 000 000</p>
+                <p><i class="fas fa-envelope"></i> info@lumina-res.com</p>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-x-twitter"></i></a>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2026 Lumina Gastronomy. جميع الحقوق محفوظة.</p>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>
