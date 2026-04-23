@@ -3,71 +3,384 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lumina Gastronomy | تجربة طعام فاخرة</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Lumina Gastronomy | تجربة الطعام الفاخرة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gold: #c5a059;
+            --dark: #0f0f0f;
+            --white: #ffffff;
+            --gray: #f8f9fa;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(15, 15, 15, 0.98);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 2px;
+        }
+
+        .logo span { color: var(--gold); }
+
+        .nav-links { display: flex; list-style: none; }
+        .nav-links li a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 15px;
+            transition: var(--transition);
+        }
+
+        .nav-links li a:hover { color: var(--gold); }
+
+        .nav-actions { display: flex; align-items: center; gap: 20px; color: white; }
+        .cart-btn { position: relative; cursor: pointer; font-size: 20px; }
+        #cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--gold);
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 20px; }
+        .hero p { font-size: 1.2rem; color: #ddd; max-width: 600px; margin-bottom: 30px; }
+        .main-btn {
+            padding: 15px 40px;
+            background: var(--gold);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+        .main-btn:hover { background: #b08e48; transform: scale(1.05); }
+
+        /* --- Menu Filters --- */
+        .container { padding: 80px 8%; }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-size: 32px; position: relative; padding-bottom: 15px; }
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--gold);
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 25px;
+            border: 1px solid var(--gold);
+            background: transparent;
+            color: var(--gold);
+            cursor: pointer;
+            border-radius: 20px;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--gold);
+            color: white;
+        }
+
+        /* --- Menu Grid --- */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            border: 1px solid #eee;
+        }
+
+        .product-card:hover { transform: translateY(-10px); }
+        .product-img { width: 100%; height: 220px; object-fit: cover; }
+        
+        .product-info { padding: 20px; text-align: center; }
+        .product-info h3 { margin-bottom: 10px; font-size: 20px; }
+        .price { color: var(--gold); font-weight: 700; font-size: 1.3rem; margin-bottom: 15px; }
+        
+        .add-btn {
+            width: 100%;
+            padding: 10px;
+            background: var(--dark);
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+        .add-btn:hover { background: var(--gold); }
+
+        /* --- Cart Sidebar --- */
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            max-width: 400px;
+            height: 100%;
+            background: var(--white);
+            z-index: 2000;
+            transition: 0.5s ease;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.2);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        .cart-overlay.active { right: 0; }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 8% 20px;
+            text-align: center;
+        }
+        .social-icons { margin: 20px 0; }
+        .social-icons a { color: white; margin: 0 15px; font-size: 24px; transition: var(--transition); }
+        .social-icons a:hover { color: var(--gold); }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.5rem; }
+        }
+    </style>
 </head>
 <body>
 
-    <header>
-        <nav class="navbar">
-            <div class="logo">LUMINA<span>.</span></div>
-            <ul class="nav-links">
-                <li><a href="#home">الرئيسية</a></li>
-                <li><a href="#menu">القائمة</a></li>
-                <li><a href="#about">من نحن</a></li>
-                <li><a href="#contact">اتصل بنا</a></li>
-            </ul>
-            <div class="cart-icon" onclick="toggleCart()">
-                <i class="fas fa-shopping-bag"></i>
+    <nav>
+        <div class="logo">LUMINA<span>.</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#menu">قائمة الطعام</a></li>
+            <li><a href="#contact">تواصل معنا</a></li>
+        </ul>
+        <div class="nav-actions">
+            <div class="cart-btn" onclick="toggleCart()">
+                <i class="fas fa-shopping-basket"></i>
                 <span id="cart-count">0</span>
             </div>
-        </nav>
-    </header>
-
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>تذوق الفن في كل لقمة</h1>
-            <p>نقدم لك تجربة استثنائية تجمع بين الطعم الأصيل واللمسة العصرية.</p>
-            <a href="#menu" class="btn">استعرض القائمة</a>
+            <i class="fas fa-bars" style="cursor:pointer; display:none;" id="menu-mobile"></i>
         </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <h1>فخامة المذاق في مكان واحد</h1>
+        <p>نحن لا نقدم الطعام فقط، بل نصنع تجارب لا تُنسى بأيدي أمهر الطهاة العالميين.</p>
+        <a href="#menu" class="main-btn">اكتشف القائمة</a>
     </section>
 
-    <section id="menu" class="menu">
-        <h2 class="section-title">قائمة الطعام المختارة</h2>
+    <section class="container" id="menu">
+        <div class="section-header">
+            <h2>قائمة الطعام المختارة</h2>
+        </div>
+
+        <div class="filters">
+            <button class="filter-btn active" onclick="filterItems('all')">الكل</button>
+            <button class="filter-btn" onclick="filterItems('main')">أطباق رئيسية</button>
+            <button class="filter-btn" onclick="filterItems('dessert')">حلويات</button>
+            <button class="filter-btn" onclick="filterItems('drinks')">مشروبات</button>
+        </div>
+
         <div class="menu-grid" id="menu-grid">
             </div>
     </section>
 
-    <div id="cart-sidebar" class="cart-sidebar">
-        <div class="cart-header">
-            <h3>سلة المشتريات</h3>
-            <i class="fas fa-times" onclick="toggleCart()"></i>
+    <div class="cart-overlay" id="cart-sidebar">
+        <div style="display:flex; justify-content:space-between; margin-bottom:30px;">
+            <h3>سلة طلباتك</h3>
+            <i class="fas fa-times" onclick="toggleCart()" style="cursor:pointer; font-size:20px;"></i>
         </div>
-        <div id="cart-items" class="cart-items">
+        <div id="cart-content" style="flex-grow:1; overflow-y:auto;">
             </div>
-        <div class="cart-footer">
-            <div class="total">الإجمالي: <span id="cart-total">0</span> ر.س</div>
-            <button class="checkout-btn">إتمام الطلب</button>
+        <div style="border-top:2px solid var(--gray); padding-top:20px;">
+            <h4>الإجمالي: <span id="cart-total">0</span> ر.س</h4>
+            <button class="add-btn" style="background:var(--gold); margin-top:15px; padding:15px;" onclick="checkout()">إتمام الطلب الآن</button>
         </div>
     </div>
 
     <footer id="contact">
-        <div class="footer-content">
-            <div class="footer-info">
-                <h3>اتصل بنا</h3>
-                <p><i class="fas fa-phone"></i> +966 500 000 000</p>
-                <p><i class="fas fa-envelope"></i> info@lumina-res.com</p>
-            </div>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-x-twitter"></i></a>
-            </div>
+        <div class="logo">LUMINA<span>.</span></div>
+        <p style="margin-top:15px; color:#aaa;">أرقى مطاعم المدينة، نقدم الجودة بكل حب.</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
         </div>
-        <p class="copyright">&copy; 2026 Lumina Gastronomy. جميع الحقوق محفوظة.</p>
+        <p style="margin-top:20px;">هاتف: +966 50 123 4567</p>
+        <p style="font-size:12px; color:#555; margin-top:30px;">&copy; 2026 جميع الحقوق محفوظة لـ Lumina</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        const products = [
+            { id: 1, name: "ستيك الترافل الأسود", category: "main", price: 185, img: "https://images.unsplash.com/photo-1546241072-48010ad28c2c?w=500" },
+            { id: 2, name: "سلمون بصوص الليمون", category: "main", price: 140, img: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=500" },
+            { id: 3, name: "كيكة الشوكولاتة الذائبة", category: "dessert", price: 45, img: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=500" },
+            { id: 4, name: "موهيتو التوت الطازج", category: "drinks", price: 30, img: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=500" },
+            { id: 5, name: "ريزوتو الفطر البري", category: "main", price: 95, img: "https://images.unsplash.com/photo-1473093226795-af9932fe5856?w=500" },
+            { id: 6, name: "تيراميسو كلاسيكي", category: "dessert", price: 50, img: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=500" }
+        ];
+
+        let cart = [];
+
+        function displayMenu(items) {
+            const grid = document.getElementById('menu-grid');
+            grid.innerHTML = items.map(p => `
+                <div class="product-card">
+                    <img src="${p.img}" class="product-img">
+                    <div class="product-info">
+                        <h3>${p.name}</h3>
+                        <p class="price">${p.price} ر.س</p>
+                        <button class="add-btn" onclick="addToCart(${p.id})">إضافة للسلة</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterItems(cat) {
+            // تحديث الأزرار
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.innerText.includes(cat === 'main' ? 'أطباق' : cat === 'dessert' ? 'حلويات' : cat === 'drinks' ? 'مشروبات' : 'الكل')) {
+                    btn.classList.add('active');
+                }
+            });
+
+            if(cat === 'all') displayMenu(products);
+            else displayMenu(products.filter(p => p.category === cat));
+        }
+
+        function toggleCart() {
+            document.getElementById('cart-sidebar').classList.toggle('active');
+        }
+
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            cart.push(product);
+            updateCart();
+            // تنبيه بسيط
+            const btn = event.target;
+            btn.innerText = "تمت الإضافة ✓";
+            btn.style.background = "#27ae60";
+            setTimeout(() => {
+                btn.innerText = "إضافة للسلة";
+                btn.style.background = "var(--dark)";
+            }, 1000);
+        }
+
+        function updateCart() {
+            document.getElementById('cart-count').innerText = cart.length;
+            const content = document.getElementById('cart-content');
+            const total = cart.reduce((acc, curr) => acc + curr.price, 0);
+            
+            content.innerHTML = cart.map((item, index) => `
+                <div class="cart-item">
+                    <div>
+                        <p style="font-weight:bold;">${item.name}</p>
+                        <small>${item.price} ر.س</small>
+                    </div>
+                    <i class="fas fa-trash" onclick="removeItem(${index})" style="color:#e74c3c; cursor:pointer;"></i>
+                </div>
+            `).join('');
+            
+            document.getElementById('cart-total').innerText = total;
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function checkout() {
+            if(cart.length === 0) return alert("السلة فارغة!");
+            alert("شكراً لطلبك! هذا عرض توضيحي فقط.");
+            cart = [];
+            updateCart();
+            toggleCart();
+        }
+
+        // تشغيل أولي
+        displayMenu(products);
+    </script>
 </body>
 </html>
