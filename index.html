@@ -3,92 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Grill Master | تجربة شواء فاخرة</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>The Grill Master | Qusai Designs</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
+        body { background-color: #0c0c0c; color: #fff; text-align: center; }
+        nav { padding: 20px; background: #1a1a1a; border-bottom: 2px solid #ff4d00; }
+        .logo { font-size: 24px; font-weight: bold; }
+        .logo span { color: #ff4d00; }
+        .hero { height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1000'); background-size: cover; background-position: center; }
+        h1 { font-size: 3.5rem; margin-bottom: 20px; }
+        h1 span { color: #ff4d00; }
+        p { font-size: 1.2rem; color: #ccc; max-width: 600px; margin-bottom: 30px; }
+        .btn { padding: 15px 40px; background: #ff4d00; color: #fff; text-decoration: none; border-radius: 30px; font-weight: bold; font-size: 1.1rem; }
+        .menu-section { padding: 80px 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
+        .card { background: #1a1a1a; padding: 20px; border-radius: 15px; border: 1px solid #333; }
+        .card img { width: 100%; border-radius: 10px; margin-bottom: 15px; }
+        .card h3 { color: #ff4d00; margin-bottom: 10px; }
+        footer { padding: 40px; color: #555; font-size: 0.9rem; }
+    </style>
 </head>
 <body>
 
     <nav>
         <div class="logo">GRILL<span>MASTER</span></div>
-        <ul class="nav-links">
-            <li><a href="#home">الرئيسية</a></li>
-            <li><a href="#about">عن المطعم</a></li>
-            <li><a href="#menu">المنيو</a></li>
-            <li><a href="#contact">اتصل بنا</a></li>
-            <li><a href="https://wa.me/YOUR_NUMBER" class="btn-nav">احجز الآن</a></li>
-        </ul>
     </nav>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1 class="reveal">أفضل تجربة <span>ستيك</span> في دبي</h1>
-            <p class="reveal">نستخدم أجود أنواع اللحوم العالمية لنقدم لك طعماً لا ينسى مطهواً على أيدي أمهر الشيفات.</p>
-            <div class="btns reveal">
-                <a href="#menu" class="cta-btn">استكشف القائمة</a>
-                <a href="#about" class="cta-btn secondary">من نحن؟</a>
-            </div>
-        </div>
+    <section class="hero">
+        <h1>أفضل تجربة <span>ستيك</span> في دبي</h1>
+        <p>لحوم فاخرة مطهوة على اللهب، جودة عالمية في قلب الإمارات.</p>
+        <a href="https://wa.me/YOUR_NUMBER" class="btn">احجز طاولتك الآن</a>
     </section>
 
-    <section id="about" class="about-section">
-        <div class="about-container">
-            <div class="about-text reveal">
-                <h2>لماذا <span>Grill Master</span>؟</h2>
-                <p>نحن لا نقدم الطعام فحسب، بل نقدم تجربة حسية متكاملة. بدأت رحلتنا في البحث عن أسرار الشواء الأصيل لنصل إلى خلطاتنا السرية التي تميزنا عن غيرنا.</p>
-                <ul>
-                    <li><i class="fas fa-check-circle"></i> لحوم طازجة يومياً</li>
-                    <li><i class="fas fa-check-circle"></i> طهي على الفحم الطبيعي</li>
-                    <li><i class="fas fa-check-circle"></i> إطلالات ساحرة وأجواء فاخرة</li>
-                </ul>
-            </div>
-            <div class="about-img reveal">
-                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1000" alt="Grill">
-            </div>
-        </div>
-    </section>
-
-    <section id="menu" class="menu-preview">
-        <h2 class="reveal">أطباقنا <span>المختارة</span></h2>
+    <section class="menu-section">
+        <h2 style="margin-bottom: 40px; font-size: 2.5rem;">أطباقنا <span>المميزة</span></h2>
         <div class="grid">
-            <div class="card reveal">
-                <div class="img-box" style="background-image: url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1000');"></div>
-                <h3>توم هوك فاخر</h3>
-                <p>900 جرام من اللحم المعتّق مع الزبدة والأعشاب.</p>
-                <span class="price">250 درهم</span>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=600" alt="steak">
+                <h3>توم هوك ستيك</h3>
+                <p>900 جرام من اللحم الفاخر</p>
             </div>
-            <div class="card reveal">
-                <div class="img-box" style="background-image: url('https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?q=80&w=1000');"></div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?q=80&w=600" alt="burger">
                 <h3>برجر اللهب</h3>
-                <p>خبز البريوش الطازج مع صوص المدخن الخاص.</p>
-                <span class="price">85 درهم</span>
+                <p>بجبنة التشيدر المدخنة</p>
             </div>
-            <div class="card reveal">
-                <div class="img-box" style="background-image: url('https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=1000');"></div>
-                <h3>أضلاع مشوية</h3>
-                <p>أضلاع مطبوخة لمدة 12 ساعة تذوب في الفم.</p>
-                <span class="price">180 درهم</span>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="contact-section">
-        <h2 class="reveal">تواصل <span>معنا</span></h2>
-        <div class="contact-info reveal">
-            <p><i class="fas fa-map-marker-alt"></i> دبي، بوليفارد الشيخ محمد بن راشد</p>
-            <p><i class="fas fa-phone"></i> +971 50 000 0000</p>
-            <p><i class="fas fa-clock"></i> مفتوح يومياً: 12 ظهراً - 12 منتصف الليل</p>
         </div>
     </section>
 
     <footer>
-        <p>© 2026 Grill Master - Designed by Qusai Designs</p>
+        <p>© 2026 Designed by Qusai Designs</p>
     </footer>
 
-    <script>
-        ScrollReveal().reveal('.reveal', { delay: 300, distance: '50px', origin: 'bottom', duration: 1000 });
-    </script>
 </body>
 </html>
