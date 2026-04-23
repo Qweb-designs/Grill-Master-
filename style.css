@@ -1,0 +1,26 @@
+Enter* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+body { background-color: #0c0c0c; color: #fff; overflow-x: hidden; }
+
+nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background: rgba(0,0,0,0.8); position: fixed; width: 100%; z-index: 1000; }
+.logo { font-size: 24px; font-weight: bold; color: #fff; }
+.logo span { color: #ff4d00; }
+.nav-links { list-style: none; display: flex; align-items: center; }
+.nav-links li { margin-left: 30px; }
+.nav-links a { text-decoration: none; color: #fff; font-weight: 500; }
+.btn-nav { background: #ff4d00; padding: 10px 20px; border-radius: 5px; transition: 0.3s; }
+
+.hero { height: 100vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1000'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; text-align: center; }
+.hero h1 { font-size: 4rem; margin-bottom: 20px; }
+.hero h1 span { color: #ff4d00; font-family: 'Playfair Display', serif; }
+.cta-btn { display: inline-block; padding: 15px 40px; background: #ff4d00; color: #fff; text-decoration: none; border-radius: 30px; font-size: 1.2rem; transition: 0.5s; }
+
+.menu-preview { padding: 100px 8%; text-align: center; }
+.menu-preview h2 { font-size: 3rem; margin-bottom: 50px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.card { background: #1a1a1a; padding: 20px; border-radius: 15px; transition: 0.3s; cursor: pointer; }
+.card:hover { transform: translateY(-10px); border: 1px solid #ff4d00; }
+.img-box { height: 250px; background-size: cover; border-radius: 10px; margin-bottom: 20px; }
+
+footer { padding: 40px; text-align: center; color: #777; border-top: 1px solid #333; }
+
+@media (max-width: 768px) { .hero h1 { font-size: 2.5rem; } }
